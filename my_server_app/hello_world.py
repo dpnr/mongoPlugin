@@ -46,10 +46,34 @@ def display_concepts(name):
 
 	output=[]
 
-	for q in concept.find({'referencedComponentId' : name}).limit(50):
+	for q in concept.find({'referencedComponentId' : name}):
 		output.append(q)
 
 	return jsonify(output)
+
+
+@app.route('/icd9codes/<name>', methods=['GET'])
+def display_icd9codes(name):
+	concept = mongo.db.s20160901
+
+	output=[]
+
+	for q in concept.find({'icd9' : name}):
+		output.append(q)
+
+	return jsonify(output)
+
+@app.route('/icd10codes/<name>', methods=['GET'])
+def display_icd10codes(name):
+	concept = mongo.db.s20160901
+
+	output=[]
+
+	for q in concept.find({'mapTarget' : name}):
+		output.append(q)
+
+	return jsonify(output)
+
 
 @app.route('/descriptions/<term>', methods=['GET'])
 def display_descriptions(term):
@@ -57,10 +81,34 @@ def display_descriptions(term):
 
  	output1=[]
 
-	for q1 in concept1.find({'sctName': {"$regex":term, "$options":"i"}}).limit(50):
+	for q1 in concept1.find({'sctName': {"$regex":term, "$options":"i"}}):
 		output1.append(q1)
 
  	return jsonify(output1)
+
+@app.route('/icd9Names/<term>', methods=['GET'])
+def display_icd9Names(term):
+	concept1 = mongo.db.s20160901
+
+ 	output1=[]
+
+	for q1 in concept1.find({'icd9_name': {"$regex":term, "$options":"i"}}):
+		output1.append(q1)
+
+ 	return jsonify(output1)
+
+@app.route('/icd10Names/<term>', methods=['GET'])
+def display_icd10Names(term):
+	concept1 = mongo.db.s20160901
+
+ 	output1=[]
+
+	for q1 in concept1.find({'icdName': {"$regex":term, "$options":"i"}}):
+		output1.append(q1)
+
+ 	return jsonify(output1)
+
+
 
 @app.route('/test')
 def _test():

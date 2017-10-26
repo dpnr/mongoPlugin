@@ -12,7 +12,7 @@ def phovea(registry):
   """
   # generator-phovea:begin
   registry.append('namespace', 'hello_world', 'my_server_app.hello_world', {
-   'namespace': '/api/hello_world'
+   'namespace': '/api'
   })
   # generator-phovea:end
   pass
