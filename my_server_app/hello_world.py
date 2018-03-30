@@ -40,6 +40,18 @@ def add():
   	users.insert({'name' : 'pranavnath'})
   	return 'added!'
 
+
+@app.route('/concepts/', methods=['GET'])
+def display_initial():
+	concept = mongo.db.s20160901
+
+	output=[]
+
+	for q in concept.find({}).limit(300):
+		output.append(q)
+
+	return jsonify(output)
+
 @app.route('/concepts/<name>', methods=['GET'])
 def display_concepts(name):
 	concept = mongo.db.s20160901
