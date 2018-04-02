@@ -98,7 +98,7 @@ def display_descriptions(term):
 
  	return jsonify(output1)
 
-@app.route('/icd9Names/<term>', methods=['GET'])
+@app.route('/icd9names/<term>', methods=['GET'])
 def display_icd9Names(term):
 	concept1 = mongo.db.s20160901
 
@@ -109,7 +109,7 @@ def display_icd9Names(term):
 
  	return jsonify(output1)
 
-@app.route('/icd10Names/<term>', methods=['GET'])
+@app.route('/icd10names/<term>', methods=['GET'])
 def display_icd10Names(term):
 	concept1 = mongo.db.s20160901
 
